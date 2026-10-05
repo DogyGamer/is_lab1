@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Спецоперации')}"></head>
+<body>
+<nav th:replace="~{fragments :: menu}"></nav>
+
+<div class="container-fluid px-4">
+    <h1 class="h3 mb-3">Специальные операции</h1>
+
+    <div class="row g-3 mb-4">
+        <div class="col-lg-4">
+            <form id="maxIdForm" class="card card-body h-100">
+                <h2 class="h6">Объект с максимальным id</h2>
+                <div class="mt-auto"><button type="submit" class="btn btn-primary">Найти</button></div>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <form id="countForm" class="card card-body h-100">
+                <h2 class="h6">Количество объектов, у которых тип топлива больше заданного</h2>
+                <select id="countFuelType" class="form-select mb-2" required>
+                    <option value="">Выберите тип топлива</option>
+                    <option th:each="f : ${fuelTypes}" th:value="${f}" th:text="${f}"></option>
+                </select>
+                <div class="mt-auto"><button type="submit" class="btn btn-primary">Посчитать</button></div>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <form id="nameForm" class="card card-body h-100">
+                <h2 class="h6">Объекты, в названии которых есть подстрока</h2>
+                <input id="substring" class="form-control mb-2" placeholder="Подстрока" required>
+                <div class="mt-auto"><button type="submit" class="btn btn-primary">Найти</button></div>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <form id="typeForm" class="card card-body h-100">
+                <h2 class="h6">Объекты заданного типа</h2>
+                <select id="vehicleType" class="form-select mb-2" required>
+                    <option value="">Выберите тип</option>
+                    <option th:each="t : ${vehicleTypes}" th:value="${t}" th:text="${t}"></option>
+                </select>
+                <div class="mt-auto"><button type="submit" class="btn btn-primary">Найти</button></div>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <form id="powerForm" class="card card-body h-100">
+                <h2 class="h6">Объекты с мощностью двигателя в диапазоне</h2>
+                <div class="row g-2 mb-2">
+                    <div class="col"><input id="minPower" type="number" step="any" class="form-control" placeholder="От" required></div>
+                    <div class="col"><input id="maxPower" type="number" step="any" class="form-control" placeholder="До" required></div>
+                </div>
+                <div class="mt-auto"><button type="submit" class="btn btn-primary">Найти</button></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="message" class="alert d-none"></div>
+    <div class="table-responsive">
+        <table id="resultTable" class="table table-striped d-none">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Координаты</th>
+                <th>Дата создания</th>
+                <th>Тип</th>
+                <th>Мощность</th>
+                <th>Колёса</th>
+                <th>Вместимость</th>
+                <th>Расстояние</th>
+                <th>Расход топлива</th>
+                <th>Топливо</th>
+            </tr>
+            </thead>
+            <tbody id="resultBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<th:block th:replace="~{fragments :: scripts}"></th:block>
+<script th:src="@{/js/special.js}"></script>
+</body>
+</html>

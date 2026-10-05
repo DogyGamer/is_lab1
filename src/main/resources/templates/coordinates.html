@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Координаты')}"></head>
+<body>
+<nav th:replace="~{fragments :: menu}"></nav>
+
+<div class="container">
+    <h1 class="h3 mb-3">Координаты</h1>
+
+    <div id="error" class="alert alert-danger d-none"></div>
+
+    <table class="table table-striped align-middle">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>X</th>
+            <th>Y</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+
+<th:block th:replace="~{fragments :: scripts}"></th:block>
+<script th:src="@{/js/coordinates.js}"></script>
+</body>
+</html>

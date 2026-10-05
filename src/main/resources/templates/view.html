@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Поиск по ID')}"></head>
+<body>
+<nav th:replace="~{fragments :: menu}"></nav>
+
+<div class="container">
+    <h1 class="h3 mb-3">Информация о транспортном средстве</h1>
+
+    <form id="searchForm" class="row g-2 mb-3">
+        <div class="col-auto">
+            <input id="vehicleId" type="number" step="1" min="1" max="2147483647" class="form-control" placeholder="ID" required>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </div>
+    </form>
+
+    <div id="error" class="alert alert-danger d-none"></div>
+    <div id="vehicleCard" class="d-none"></div>
+</div>
+
+<div th:replace="~{fragments :: editModal}"></div>
+
+<th:block th:replace="~{fragments :: scripts}"></th:block>
+<script th:src="@{/js/view.js}"></script>
+</body>
+</html>

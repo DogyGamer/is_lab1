@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Создание')}"></head>
+<body>
+<nav th:replace="~{fragments :: menu}"></nav>
+
+<div class="container">
+    <h1 class="h3 mb-3">Создание транспортного средства</h1>
+
+    <form id="vehicleForm">
+        <div id="formErrors" class="alert alert-danger d-none"></div>
+        <th:block th:replace="~{fragments :: vehicleFields}"></th:block>
+        <button type="submit" class="btn btn-primary mt-4">Создать</button>
+    </form>
+</div>
+
+<th:block th:replace="~{fragments :: scripts}"></th:block>
+<script th:src="@{/js/create.js}"></script>
+</body>
+</html>
